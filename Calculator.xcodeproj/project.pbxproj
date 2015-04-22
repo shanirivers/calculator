@@ -36,6 +36,7 @@
 		F40C0FF91AE14DB7000FA1A3 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40C0FFE1AE14DB8000FA1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40C0FFF1AE14DB8000FA1A3 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		F4514B041AE7C30400E1DC66 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				F40C0FE61AE14DB7000FA1A3 /* Calculator */,
 				F40C0FFC1AE14DB7000FA1A3 /* CalculatorTests */,
 				F40C0FE51AE14DB7000FA1A3 /* Products */,
+				F45C22DD1AE53DDE0029B609 /* Playground */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +112,14 @@
 				F40C0FFE1AE14DB8000FA1A3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F45C22DD1AE53DDE0029B609 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				F4514B041AE7C30400E1DC66 /* MyPlayground.playground */,
+			);
+			name = Playground;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +417,7 @@
 				F40C10051AE14DB8000FA1A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F40C10061AE14DB8000FA1A3 /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +426,7 @@
 				F40C10081AE14DB8000FA1A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
