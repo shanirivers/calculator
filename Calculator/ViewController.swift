@@ -37,6 +37,7 @@ class ViewController: UIViewController
         }
     }
     
+    // Convert a string to a double, get and set it
     var displayValue: Double {
         get {
             //convert string to double with number formatter
@@ -50,10 +51,18 @@ class ViewController: UIViewController
         }
     }
     
-    // Enter button, execute and put number into internal stack
+    // ENTER button, execute and put number into internal stack
     @IBAction func enter() {
         userIsInTheMiddleOfTypingNumber = false
         operandStack.append(displayValue)
+        println("operandStack = \(operandStack)")
+    }
+    
+    // CLEAR button, to execute to clear contents
+    @IBAction func clear() {
+        userIsInTheMiddleOfTypingNumber = false
+        operandStack.removeAll(keepCapacity: false)
+        display.text = "0"
         println("operandStack = \(operandStack)")
     }
     
