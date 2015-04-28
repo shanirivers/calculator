@@ -12,6 +12,7 @@ import Darwin
 class ViewController: UIViewController
 {
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var historyDisplay: UILabel!
     
     // Properties: initialized or has value set
     var userIsInTheMiddleOfTypingNumber = false
