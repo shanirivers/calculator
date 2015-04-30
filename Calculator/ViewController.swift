@@ -68,7 +68,7 @@ class ViewController: UIViewController
     }
     
     // PERFORM OPERATION THAT ONLY TAKES TWO ARGUMENTS
-    func performOperation(operation: (Double, Double) -> Double) {
+    func performOperations(operation: (Double, Double) -> Double) {
         if operandStack.count >= 2 {
             displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
             enter()
@@ -76,7 +76,7 @@ class ViewController: UIViewController
     }
     
     // PERFORM OPERATION THAT ONLY TAKES ONE ARGUMENT
-    func performOperation(operation: (Double) -> Double) {
+    func performOperation(operation: Double -> Double) {
         if operandStack.count >= 2 {
             displayValue = operation(operandStack.removeLast())
             enter()
@@ -102,23 +102,20 @@ class ViewController: UIViewController
         }
         switch operation {
             // closure for operations, and careful with order of operations
-        case "×": performOperation() { $0 * $1 }
-        case "÷": performOperation() { $1 / $0 }
-        case "−": performOperation() { $0 - $1 }
-        case "+": performOperation() { $1 + $0 }
+        case "×": performOperations() { $0 * $1 }
+        case "÷": performOperations() { $1 / $0 }
+        case "−": performOperations() { $0 - $1 }
+        case "+": performOperations() { $1 + $0 }
         case "√": performOperation() { sqrt($0) }
         case "cos( )": performOperation() { cos($0) }
         case "sin( )": performOperation() { sin($0) }
         case "π": performOperand(M_PI)
         default: break
         }
-        
-//        switch operandConstant {
-//        case "π": performOperation()
-//        default: break
-//        }
-        
     }
+    
+
+    
     
     // INTERNAL STACK, array and initialize to an empty array
     var operandStack = Array<Double>()
