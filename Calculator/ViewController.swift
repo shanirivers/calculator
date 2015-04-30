@@ -76,7 +76,7 @@ class ViewController: UIViewController
     }
     
     // PERFORM OPERATION THAT ONLY TAKES ONE ARGUMENT
-    func performOperation(operation: Double -> Double) {
+    func performOperation(operation: (Double) -> Double) {
         if operandStack.count >= 2 {
             displayValue = operation(operandStack.removeLast())
             enter()
@@ -110,7 +110,8 @@ class ViewController: UIViewController
         case "cos( )": performOperation() { cos($0) }
         case "sin( )": performOperation() { sin($0) }
         case "π": performOperand(M_PI)
-        default: break
+        default:
+            break
         }
     }
     
