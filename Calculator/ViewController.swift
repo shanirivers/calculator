@@ -17,8 +17,11 @@ class ViewController: UIViewController
     // Properties: initialized or has value set
     var userIsInTheMiddleOfTypingNumber = false
     
+    // Calculator brain, model
+    var  brain = CalculatorBrain()
+    
+    
     @IBAction func appendDigit(sender: UIButton) {
-        
         // Unwrapped current title
         let digit = sender.currentTitle!
         
@@ -52,83 +55,39 @@ class ViewController: UIViewController
         }
     }
     
+    // Operator action, method
+    @IBAction func operate(sender: UIButton) {
+        if userIsInTheMiddleOfTypingNumber {
+            enter()
+        }
+        
+        if let operation = sender.currentTitle {
+            if let result  = brain.performOperation(operation) {
+                displayValue = result
+            } else {
+                displayValue = 0 // will need to set to nil for hmwk
+            }
+            
+        }
+    }
+    
     // ENTER button, execute and put number into internal stack
     @IBAction func enter() {
         userIsInTheMiddleOfTypingNumber = false
-        operandStack.append(displayValue)
-        println("operandStack = \(operandStack)")
+        if let result = brain.pushOperand(displayValue) {
+            displayValue = result
+        } else {
+            displayValue = 0 // will need to set to nil for hmwk
+        }
+        
     }
     
     // CLEAR button, to execute to clear contents
     @IBAction func clear() {
         userIsInTheMiddleOfTypingNumber = false
-        operandStack.removeAll(keepCapacity: false)
-        display.text = "0"
-        println("operandStack = \(operandStack)")
+//        operandStack.removeAll(keepCapacity: false)
+//        display.text = "0"
+//        println("operandStack = \(operandStack)")
     }
-    
-    // PERFORM OPERATION THAT ONLY TAKES TWO ARGUMENTS
-    func performOperations(operation: (Double, Double) -> Double) {
-        if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
-            enter()
-        }
-    }
-    
-    // PERFORM OPERATION THAT ONLY TAKES ONE ARGUMENT
-    func performOperation(operation: (Double) -> Double) {
-        if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast())
-            enter()
-        }
-    }
-    
-    func performOperand(operand: (Double)) -> Double {
-        operandStack.append(operand)
-        displayValue = operandStack.removeLast()
-        enter()
-        return operand
-       
-    }
-    
-    
-    // Operator action, method
-    @IBAction func operate(sender: UIButton) {
-        let operation = sender.currentTitle!
-        let operandConstant = sender.currentTitle!
-        
-        if userIsInTheMiddleOfTypingNumber {
-            enter()
-        }
-        switch operation {
-            // closure for operations, and careful with order of operations
-        case "×": performOperations() { $0 * $1 }
-        case "÷": performOperations() { $1 / $0 }
-        case "−": performOperations() { $0 - $1 }
-        case "+": performOperations() { $1 + $0 }
-        case "√": performOperation() { sqrt($0) }
-        case "cos( )": performOperation() { cos($0) }
-        case "sin( )": performOperation() { sin($0) }
-        case "π": performOperand(M_PI)
-        default:
-            break
-        }
-    }
-    
-
-    
-    
-    // INTERNAL STACK, array and initialize to an empty array
-    var operandStack = Array<Double>()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
