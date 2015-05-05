@@ -62,7 +62,7 @@ class ViewController: UIViewController
         }
         
         if let operation = sender.currentTitle {
-            if let result  = brain.performOperation(operation) {
+            if let result = brain.performOperation(operation) {
                 displayValue = result
             } else {
                 displayValue = 0 // will need to set to nil for hmwk

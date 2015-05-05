@@ -9,18 +9,19 @@
 import Foundation
 
 class CalculatorBrain {
-    private enum Op: Printable  //printable = a protocol, this enum implements one protocol description
+    private enum Op: Printable  //Printable = a protocol, this enum implements one protocol description, this can be used for classes as well
     {
         case Operand(Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
         
+        // Computed property, that converts a double to a string that's read-only, could use this for the history part of the hmwk
         var description: String {
             get {
-                switch self{
+                switch self {
                 case .Operand(let operand):
                     return "\(operand)"
-                case .UnaryOperation(let symbol, _):
+                case .UnaryOperation(let symbol, _):  // "_" is used because don't care about function
                     return symbol
                 case .BinaryOperation(let symbol, _):
                     return symbol
@@ -40,8 +41,8 @@ class CalculatorBrain {
         }
         
         knownOps["×"] = Op.BinaryOperation("×", *)   //<-- knownOps["×"] = Op.BinaryOperation("×") { $0 * $1}
-        knownOps["-"] = Op.BinaryOperation("-") { $0 - $1} // <-- can't do it with minus or divid, due to order of operations
-        knownOps["÷"] = Op.BinaryOperation("÷") { $0 / $1}
+        knownOps["-"] = Op.BinaryOperation("-") { $1 - $0} // <-- can't do it with minus or divid, due to order of operations
+        knownOps["÷"] = Op.BinaryOperation("÷") { $1 / $0}
         knownOps["+"] = Op.BinaryOperation("+", +)
         knownOps["√"] = Op.UnaryOperation("√") { sqrt($0) }
         //        NEED TO ADD THESE TO THE MODEL, CALCULATOR BRAIN:
@@ -89,9 +90,11 @@ class CalculatorBrain {
         return evaluate()
     }
     
-    func performOperation(symbol: String) {
-        if let operation = knownOps[symbol] {// <-- always returns an optional when looking for info in a dict
+    func performOperation(symbol: String) -> Double? {
+        if let operation = knownOps[symbol] {
+            // ^ always returns an optional when looking for info in a dict
             opStack.append(operation)
         }
+        return evaluate()
     }
 }
