@@ -47,8 +47,7 @@ class CalculatorBrain {
         knownOps["√"] = Op.UnaryOperation("√") { sqrt($0) }
         knownOps["cos()"] = Op.UnaryOperation("cos()") { cos($0) }
         knownOps["sin()"] = Op.UnaryOperation("sin()") { sin($0) }
-        //        NEED TO ADD THESE TO THE MODEL, CALCULATOR BRAIN:
-        //        case "π": performOperand(M_PI)
+        knownOps["π"] = Op.Operand( M_PI )
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {
