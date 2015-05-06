@@ -85,9 +85,8 @@ class ViewController: UIViewController
     // CLEAR button, to execute to clear contents
     @IBAction func clear() {
         userIsInTheMiddleOfTypingNumber = false
-//        operandStack.removeAll(keepCapacity: false)
-//        display.text = "0"
-//        println("operandStack = \(operandStack)")
+        brain.clearOpStack()
+        display.text = "0"
     }
 }
 

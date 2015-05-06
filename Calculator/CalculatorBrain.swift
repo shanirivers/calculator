@@ -41,13 +41,13 @@ class CalculatorBrain {
         }
         
         knownOps["×"] = Op.BinaryOperation("×", *)   //<-- knownOps["×"] = Op.BinaryOperation("×") { $0 * $1}
-        knownOps["-"] = Op.BinaryOperation("-") { $1 - $0} // <-- can't do it with minus or divid, due to order of operations
-        knownOps["÷"] = Op.BinaryOperation("÷") { $1 / $0}
+        knownOps["-"] = Op.BinaryOperation("-") { $1 - $0 } // <-- can't do it with minus or divid, due to order of operations
+        knownOps["÷"] = Op.BinaryOperation("÷") { $0 / $1 }
         knownOps["+"] = Op.BinaryOperation("+", +)
         knownOps["√"] = Op.UnaryOperation("√") { sqrt($0) }
+        knownOps["cos()"] = Op.UnaryOperation("cos()") { cos($0) }
+        knownOps["sin()"] = Op.UnaryOperation("sin()") { sin($0) }
         //        NEED TO ADD THESE TO THE MODEL, CALCULATOR BRAIN:
-        //        case "cos( )": performOperation() { cos($0) }
-        //        case "sin( )": performOperation() { sin($0) }
         //        case "π": performOperand(M_PI)
     }
     
@@ -96,5 +96,10 @@ class CalculatorBrain {
             opStack.append(operation)
         }
         return evaluate()
+    }
+    
+    func clearOpStack () {
+        opStack.removeAll(keepCapacity: false)
+        println("\(opStack)")
     }
 }
