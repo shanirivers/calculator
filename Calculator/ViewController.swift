@@ -82,7 +82,7 @@ class ViewController: UIViewController
         
     }
     
-    // CLEAR button, to execute to clear contents
+    // CLEAR button, to execute to clear contents from stack
     @IBAction func clear() {
         userIsInTheMiddleOfTypingNumber = false
         brain.clearOpStack()
