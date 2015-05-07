@@ -40,10 +40,10 @@ class CalculatorBrain {
             knownOps[op.description] = op
         }
         
-        knownOps["×"] = Op.BinaryOperation("×", *)   //<-- knownOps["×"] = Op.BinaryOperation("×") { $0 * $1}
+        knownOps["×"] = Op.BinaryOperation("×") { $0 * $1 }  //<-- knownOps["×"] = Op.BinaryOperation("×") { $0 * $1}
         knownOps["-"] = Op.BinaryOperation("-") { $1 - $0 } // <-- can't do it with minus or divid, due to order of operations
         knownOps["÷"] = Op.BinaryOperation("÷") { $0 / $1 }
-        knownOps["+"] = Op.BinaryOperation("+", +)
+        knownOps["+"] = Op.BinaryOperation("+") { $0 + $1 }
         knownOps["√"] = Op.UnaryOperation("√") { sqrt($0) }
         knownOps["cos()"] = Op.UnaryOperation("cos()") { cos($0) }
         knownOps["sin()"] = Op.UnaryOperation("sin()") { sin($0) }
@@ -53,19 +53,22 @@ class CalculatorBrain {
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {
         if !ops.isEmpty {
             var remainingOps = ops  // it's mutated and really no copying is occurring
-            let op = remainingOps.removeLast()
+            let op = remainingOps.removeLast() // removes last op from stack
+            
             switch op {
             case .Operand(let operand):
                 return (operand, remainingOps)
+                
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = evaluate(remainingOps)
                 if let operand = operandEvaluation.result {
                    return (operation(operand), operandEvaluation.remainingOps)
                 }
+                
             case .BinaryOperation(_, let operation):
                 let op1Evaluation = evaluate(remainingOps)
                 if let operand1 = op1Evaluation.result {
-                    let op2Evaluation = evaluate(remainingOps)
+                    let op2Evaluation = evaluate(op1Evaluation.remainingOps)
                     if let operand2 = op2Evaluation.result {
                         return (operation(operand1, operand2), op2Evaluation.remainingOps)
                     }
@@ -77,7 +80,7 @@ class CalculatorBrain {
     }
     
     // get the result
-    func evaluate () -> Double? {
+    func evaluate() -> Double? {
         let (result, remainder) = evaluate(opStack) // remainingOps = remainder, therefore the name doesn't need to be the same, as long as you return a tuple
         println("\(opStack) = \(result) with \(remainder) left over")
         return result
