@@ -265,7 +265,7 @@
                                 <rect key="frame" x="472" y="328" width="104" height="82"/>
                                 <color key="backgroundColor" red="0.93285100397310761" green="0.90196079015731812" blue="0.99105926877573913" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="cos( )">
+                                <state key="normal" title="cos">
                                     <color key="titleColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -276,7 +276,7 @@
                                 <rect key="frame" x="472" y="237" width="104" height="83"/>
                                 <color key="backgroundColor" red="0.93285100397310761" green="0.90196079015731812" blue="0.99105926877573913" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="sin( )">
+                                <state key="normal" title="sin">
                                     <color key="titleColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

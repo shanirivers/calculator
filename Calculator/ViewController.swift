@@ -14,16 +14,25 @@ class ViewController: UIViewController
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var historyDisplay: UILabel!
     
+    // Set the historyDisplay label to empty on start up
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.historyDisplay.text = "0"
+    }
+    
     // Properties: initialized or has value set
     var userIsInTheMiddleOfTypingNumber = false
     
     // Calculator brain, model
     var  brain = CalculatorBrain()
+    var tempHistory: [String] = []
+    var historyPretty: [String] = []
     
     
     @IBAction func appendDigit(sender: UIButton) {
         // Unwrapped current title
         let digit = sender.currentTitle!
+        
         
         if userIsInTheMiddleOfTypingNumber {
             if digit == "." {
@@ -33,6 +42,7 @@ class ViewController: UIViewController
             }
             else {
                 display.text = display.text! + digit
+                
             }
         }
         else {
@@ -51,8 +61,25 @@ class ViewController: UIViewController
         set {
             // compute value
             display.text = "\(newValue)"
+            
+            // append the display text to the temporary history array
+            if display.text != "π" {tempHistory.append(display.text!)}
+
             userIsInTheMiddleOfTypingNumber = false
         }
+    }
+
+
+    
+    // Show the history of the last 2 calculations and then clear out the temporary history array
+    func showHistoryDetail() {
+        if historyPretty.count > 1 {
+            historyDisplay.text = "\(historyPretty.last!)\n" + "\(historyPretty[historyPretty.count - 2])"
+        } else {
+            historyDisplay.text = historyPretty.last!
+        }
+        
+        tempHistory.removeAll(keepCapacity: false)
     }
     
     // Operator action, method
@@ -64,6 +91,30 @@ class ViewController: UIViewController
         if let operation = sender.currentTitle {
             if let result = brain.performOperation(operation) {
                 displayValue = result
+                
+                // Append the operation to the temporary history array
+                tempHistory.append(operation)
+                
+                // Set the history display formatting based on the value of the operand and tack the pretty print format with values from the temporary history array to the pretty-print array
+                if tempHistory.last == "√" || tempHistory.last == "sin" || tempHistory.last == "cos" {
+                    historyPretty.append("\(tempHistory.last!) (\(tempHistory.first!)) = \(result)")
+                    showHistoryDetail()
+                }
+                    
+//                else if tempHistory.last == "π" {
+//                    historyPretty.append("\(tempHistory.first!) (\(tempHistory.last!)) (\(tempHistory[1]))= \(result)")
+//                    showHistoryDetail()
+//                }
+                    
+                else {
+                    historyPretty.append("\(tempHistory[0]) \(tempHistory.last!) \(tempHistory[1]) = \(result)")
+                    showHistoryDetail()
+                    
+                    for calculations in historyPretty {
+                        println(historyPretty)
+                    }
+                }
+                
             } else {
                 displayValue = 0 // will need to set to nil for hmwk
             }
@@ -82,11 +133,15 @@ class ViewController: UIViewController
         
     }
     
-    // CLEAR button, to execute to clear contents from stack
+    // CLEAR button, to execute to clear contents from stack and all arrays
     @IBAction func clear() {
         userIsInTheMiddleOfTypingNumber = false
         brain.clearOpStack()
+        tempHistory.removeAll(keepCapacity: false)
+        historyPretty.removeAll(keepCapacity: false)
+        historyDisplay.text = "0"
         display.text = "0"
     }
+    
 }
 
