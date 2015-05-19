@@ -13,6 +13,7 @@
 		F40C0FF11AE14DB7000FA1A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40C0FF01AE14DB7000FA1A3 /* Images.xcassets */; };
 		F40C0FF41AE14DB7000FA1A3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F40C0FF21AE14DB7000FA1A3 /* LaunchScreen.xib */; };
 		F40C10001AE14DB8000FA1A3 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40C0FFF1AE14DB8000FA1A3 /* CalculatorTests.swift */; };
+		F450AD581B0B7B4C009E5390 /* Arcon-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F450AD571B0B7B4C009E5390 /* Arcon-Regular.otf */; };
 		F4AB45C81AF120120081B659 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB45C71AF120120081B659 /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		F40C0FF91AE14DB7000FA1A3 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40C0FFE1AE14DB8000FA1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40C0FFF1AE14DB8000FA1A3 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		F450AD571B0B7B4C009E5390 /* Arcon-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arcon-Regular.otf"; path = "../../../../Downloads/arcon/Arcon-Regular.otf"; sourceTree = "<group>"; };
 		F4514B041AE7C30400E1DC66 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		F4AB45C71AF120120081B659 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 		F40C0FE61AE14DB7000FA1A3 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F450AD561B0B7B23009E5390 /* Resources */,
 				F40C0FEB1AE14DB7000FA1A3 /* ViewController.swift */,
 				F4AB45C71AF120120081B659 /* CalculatorBrain.swift */,
 				F40C0FED1AE14DB7000FA1A3 /* Main.storyboard */,
@@ -115,6 +118,22 @@
 				F40C0FFE1AE14DB8000FA1A3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F450AD561B0B7B23009E5390 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F450AD591B0B7B5E009E5390 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F450AD591B0B7B5E009E5390 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F450AD571B0B7B4C009E5390 /* Arcon-Regular.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		F45C22DD1AE53DDE0029B609 /* Playground */ = {
@@ -207,6 +226,7 @@
 			files = (
 				F40C0FEF1AE14DB7000FA1A3 /* Main.storyboard in Resources */,
 				F40C0FF41AE14DB7000FA1A3 /* LaunchScreen.xib in Resources */,
+				F450AD581B0B7B4C009E5390 /* Arcon-Regular.otf in Resources */,
 				F40C0FF11AE14DB7000FA1A3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
