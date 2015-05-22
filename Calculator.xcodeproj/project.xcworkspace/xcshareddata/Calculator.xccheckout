@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C25A5E96-67C8-4AC2-A580-AA861F99763E</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Calculator</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7BD52B0DB92B0CF8501938C8263F030B269E45D4</key>
 		<string>https://github.com/shanirivers/calculator.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Calculator.xcodeproj/project.xcworkspace</string>
+	<string>Calculator.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7BD52B0DB92B0CF8501938C8263F030B269E45D4</key>
