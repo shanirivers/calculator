@@ -10,7 +10,7 @@ import Foundation
 import Darwin
 
 class CalculatorBrain {
-    private enum Op: Printable  //Printable = a protocol, this enum implements one protocol description, this can be used for classes as well
+    private enum Op: CustomStringConvertible  //Printable = a protocol, this enum implements one protocol description, this can be used for classes as well
     {
         case Operand(Double)
         case NullaryOperation(String, () -> Double)
@@ -90,7 +90,7 @@ class CalculatorBrain {
     // get the result
     func evaluate() -> Double? {
         let (result, remainder) = evaluate(opStack) // remainingOps = remainder, therefore the name doesn't need to be the same, as long as you return a tuple
-        println("\(opStack) = \(result) with \(remainder) left over")
+        print("\(opStack) = \(result) with \(remainder) left over")
         
         return result
     }
@@ -110,6 +110,6 @@ class CalculatorBrain {
     
     func clearOpStack () {
         opStack.removeAll(keepCapacity: false)
-        println("\(opStack)")
+        print("\(opStack)")
     }
 }

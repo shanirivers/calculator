@@ -111,7 +111,7 @@ class ViewController: UIViewController
                     showHistoryDetail()
                     
                     for calculations in historyPretty {
-                        println(historyPretty)
+                        print(historyPretty)
                     }
                 }
                 
